@@ -1,0 +1,279 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Notebook API",
+        "description": "API for managing notebooks",
+        "contact": {
+            "email": "contact@notebook-api.com"
+        },
+        "license": {
+            "name": "Nginx latest",
+            "url": "https://nginx.org/ru/"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/notebook": {
+            "get": {
+                "tags": [
+                    "notebook"
+                ],
+                "summary": "Get a list of notebooks",
+                "operationId": "3278597f70ffcf3df60a694e0ff0d1c1",
+                "responses": {
+                    "200": {
+                        "description": "Return a list of notebooks"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "notebook"
+                ],
+                "summary": "Create a notebook",
+                "operationId": "f737e96f4910ff283e75bc7e05c8379f",
+                "parameters": [
+                    {
+                        "name": "FIO",
+                        "in": "path",
+                        "description": "Last name first name patronymic of the person",
+                        "required": true,
+                        "schema": {
+                            "type": "srting"
+                        }
+                    },
+                    {
+                        "name": "company",
+                        "in": "path",
+                        "description": "The company where the person works",
+                        "schema": {
+                            "type": "srting"
+                        }
+                    },
+                    {
+                        "name": "phone",
+                        "in": "path",
+                        "description": "The phone number of the person",
+                        "required": true,
+                        "schema": {
+                            "type": "srting"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "The email of the person",
+                        "required": true,
+                        "schema": {
+                            "type": "srting",
+                            "format": "email"
+                        }
+                    },
+                    {
+                        "name": "birthdate",
+                        "in": "path",
+                        "description": "The date of birth of the person",
+                        "schema": {
+                            "type": "date"
+                        }
+                    },
+                    {
+                        "name": "photo",
+                        "in": "path",
+                        "description": "The photo of the person",
+                        "schema": {
+                            "type": "srting"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Notebook object to be created"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Notebook created"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            }
+        },
+        "/api/v1/notebook/{id}": {
+            "get": {
+                "tags": [
+                    "notebook"
+                ],
+                "summary": "Get a specific notebook",
+                "operationId": "a07418b0decb4969394e79f597aa543f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the notebook to get",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Return the notebook"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "notebook"
+                ],
+                "summary": "Update a specific notebook",
+                "operationId": "36d82d17bc829073e309f8316e61a7b1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the notebook to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "FIO",
+                        "in": "path",
+                        "description": "Last name first name patronymic of the person",
+                        "schema": {
+                            "type": "srting"
+                        }
+                    },
+                    {
+                        "name": "company",
+                        "in": "path",
+                        "description": "The company where the person works",
+                        "schema": {
+                            "type": "srting"
+                        }
+                    },
+                    {
+                        "name": "phone",
+                        "in": "path",
+                        "description": "The phone number of the person",
+                        "schema": {
+                            "type": "srting"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "The email of the person",
+                        "schema": {
+                            "type": "srting",
+                            "format": "email"
+                        }
+                    },
+                    {
+                        "name": "birthdate",
+                        "in": "path",
+                        "description": "The date of birth of the person",
+                        "schema": {
+                            "type": "date"
+                        }
+                    },
+                    {
+                        "name": "photo",
+                        "in": "path",
+                        "description": "The photo of the person",
+                        "schema": {
+                            "type": "srting"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Notebook object to be updated"
+                },
+                "responses": {
+                    "200": {
+                        "description": "Notebook updated"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "notebook"
+                ],
+                "summary": "Delete a specific notebook",
+                "operationId": "6be314584e9cc2d22f7dff1d0b286f21",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the notebook to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Notebook deleted"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Notebook": {
+                "required": [
+                    "FIO",
+                    "phone",
+                    "email"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "The ID of the notebook",
+                        "type": "integer"
+                    },
+                    "FIO": {
+                        "description": "Last name first name patronymic of the person",
+                        "type": "string"
+                    },
+                    "company": {
+                        "description": "The company where the person works",
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "The phone number of the person",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "The email of the person",
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "birthdate": {
+                        "description": "The date of birth of the person",
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "photo": {
+                        "description": "The photo of the person",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}
